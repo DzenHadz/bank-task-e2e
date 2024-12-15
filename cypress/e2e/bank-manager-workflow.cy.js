@@ -33,7 +33,6 @@ describe("Bank manager workflow", () => {
   it("Add Customer", () => {
     bankHome.addCustomerButton.should("be.visible");
     bankHome.addCustomerButton.click();
-
     cy.url().should("contain", "/manager/addCust");
     addCustomer.formWrapper.should("be.visible");
     addCustomer.enterFormData(testCustomer);
@@ -41,6 +40,7 @@ describe("Bank manager workflow", () => {
     cy.on("window:alert", (str) => {
       expect(str).to.contains(`Customer added successfully with customer id`);
     });
+    
     // Verify that user is presented in Customers table
     bankHome.customersButton.click();
     customer.searchInput.should("be.visible");
@@ -64,7 +64,7 @@ describe("Bank manager workflow", () => {
     bankHome.customersButton.click();
 
     cy.task("getAccountId").then((id) => {
-      customer.validateUserHaveAccountId(testCustomer, id);
+      customer.validateUserHaveCorrectAccountId(testCustomer, id);
     });
   });
 });

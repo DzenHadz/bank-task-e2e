@@ -28,7 +28,7 @@ export default class CustomersPage extends BankManagerHomePage {
       .contains(user.postCode);
   }
 
-  validateUserHaveAccountId(user, accountId) {
+  validateUserHaveCorrectAccountId(user, accountId) {
     this.searchInput.type(user.firstName);
     this.tableRow.should("have.length", 1);
     this.tableRow
