@@ -40,16 +40,15 @@ describe("Customer workflow login", () => {
     const amount = 50;
     home.depositButton.click();
     home.balanceNumber.invoke('text').then(val => { 
-        cy.wrap(val).as('accountBalance');
+        cy.wrap(val).as('initialAccountBalance');
     })
     deposit.depositAmount.type(amount);
     deposit.depositButton.click();
     // Validate transaction in UI
     deposit.successMessage.should("have.text", "Deposit Successful");
-    cy.get('@accountBalance').then(item => { 
-        cy.log(item)
-        home.balanceNumber.invoke('text').then(val => { 
-        expect(parseInt(val)).to.equal(parseInt(item) + amount)
+    cy.get('@initialAccountBalance').then(initialAccountBalance => { 
+        home.balanceNumber.invoke('text').then(newAccountBalance => { 
+        expect(parseInt(newAccountBalance)).to.equal(parseInt(initialAccountBalance) + amount)
         })
     })
 

@@ -8,11 +8,6 @@ Cypress.Commands.add("loginAsBankManager", () => {
   cy.url().should("contain", "/manager");
 });
 
-Cypress.Commands.add("createNewCustomer", () => {
-  cy.window().then((item) => {
-    console.log(item);
-  });
-});
 
 Cypress.Commands.add("addUserWithAccount", (user) => {
   cy.window().then((win) => {

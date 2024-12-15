@@ -43,12 +43,14 @@ describe("Bank manager workflow", () => {
     
     // Verify that user is presented in Customers table
     bankHome.customersButton.click();
+    cy.url().should("contain", "/manager/list");
     customer.searchInput.should("be.visible");
     customer.validateUsersIsPresent(testCustomer);
   });
 
   it("Open customer account", () => {
     bankHome.openAccountButton.click();
+    cy.url().should("contain", "/manager/openAccount");
     openAccount.selectAccountDropdown.select(
       testCustomer.firstName + " " + testCustomer.lastName
     );
@@ -62,9 +64,10 @@ describe("Bank manager workflow", () => {
       cy.task("setAccountId", accountId);
     });
     bankHome.customersButton.click();
+    cy.url().should("contain", "/manager/list");
 
-    cy.task("getAccountId").then((id) => {
-      customer.validateUserHaveCorrectAccountId(testCustomer, id);
+    cy.task("getAccountId").then((accountId) => {
+      customer.validateUserHaveCorrectAccountId(testCustomer, accountId);
     });
   });
 });

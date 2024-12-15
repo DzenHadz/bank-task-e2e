@@ -12,18 +12,23 @@ export default class CustomersPage extends BankManagerHomePage {
   validateUsersIsPresent(user) {
     this.searchInput.type(user.firstName);
     this.tableRow.should("have.length", 1);
-    this.tableRow.should("have.length", 1);
+
     this.tableRow
-      .find("td")
-      .contains(user.firstName)
-      .parent()
+    .find("td")
+    .contains(user.firstName)
+    .parent().as(
+      'desiredTableRow'
+    )
+
+    cy.get(
+      '@desiredTableRow'
+    )
       .find("td:nth-child(2)")
       .contains(user.lastName);
 
-    this.tableRow
-      .find("td")
-      .contains(user.firstName)
-      .parent()
+      cy.get(
+        '@desiredTableRow'
+      )
       .find("td:nth-child(3)")
       .contains(user.postCode);
   }
