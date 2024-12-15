@@ -1,4 +1,4 @@
-import BasePage from "../base.page";
+import BasePage from '../base.page';
 
 export default class CustomerHome extends BasePage {
   get accountName() {
@@ -7,19 +7,19 @@ export default class CustomerHome extends BasePage {
 
   get accountNumber() {
     return cy.get(
-      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(1)'
+      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(1)',
     );
   }
 
   get balanceNumber() {
     return cy.get(
-      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(2)'
+      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(2)',
     );
   }
 
   get currency() {
     return cy.get(
-      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(3)'
+      'div > div[ng-hide="noAccount"]:nth-child(3) > strong:nth-child(3)',
     );
   }
 

@@ -1,4 +1,4 @@
-import BankManagerHomePage from "./bank-home.page";
+import BankManagerHomePage from './bank-home.page';
 
 export default class AddCustomerPage extends BankManagerHomePage {
   get formWrapper() {

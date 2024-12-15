@@ -1,4 +1,4 @@
-import BankManagerHomePage from "./bank-home.page";
+import BankManagerHomePage from './bank-home.page';
 
 export default class CustomersPage extends BankManagerHomePage {
   get searchInput() {
@@ -11,36 +11,27 @@ export default class CustomersPage extends BankManagerHomePage {
 
   validateUsersIsPresent(user) {
     this.searchInput.type(user.firstName);
-    this.tableRow.should("have.length", 1);
+    this.tableRow.should('have.length', 1);
 
     this.tableRow
-    .find("td")
-    .contains(user.firstName)
-    .parent().as(
-      'desiredTableRow'
-    )
+      .find('td')
+      .contains(user.firstName)
+      .parent()
+      .as('desiredTableRow');
 
-    cy.get(
-      '@desiredTableRow'
-    )
-      .find("td:nth-child(2)")
-      .contains(user.lastName);
+    cy.get('@desiredTableRow').find('td:nth-child(2)').contains(user.lastName);
 
-      cy.get(
-        '@desiredTableRow'
-      )
-      .find("td:nth-child(3)")
-      .contains(user.postCode);
+    cy.get('@desiredTableRow').find('td:nth-child(3)').contains(user.postCode);
   }
 
   validateUserHaveCorrectAccountId(user, accountId) {
     this.searchInput.type(user.firstName);
-    this.tableRow.should("have.length", 1);
+    this.tableRow.should('have.length', 1);
     this.tableRow
-      .find("td")
+      .find('td')
       .contains(user.firstName)
       .parent()
-      .find("td:nth-child(4)")
+      .find('td:nth-child(4)')
       .contains(accountId);
   }
 }

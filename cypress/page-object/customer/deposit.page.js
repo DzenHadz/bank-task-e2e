@@ -1,4 +1,4 @@
-import CustomerHome from "./customer-home.page";
+import CustomerHome from './customer-home.page';
 
 export default class DepositPage extends CustomerHome {
   get depositAmount() {
@@ -6,7 +6,7 @@ export default class DepositPage extends CustomerHome {
   }
 
   get depositButton() {
-    return cy.get('button[type="submit"]').contains("Deposit");
+    return cy.get('button[type="submit"]').contains('Deposit');
   }
 
   get successMessage() {

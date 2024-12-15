@@ -1,19 +1,18 @@
-Cypress.Commands.add("loginAsCustomer", () => {
+Cypress.Commands.add('loginAsCustomer', () => {
   cy.get('button[ng-click="customer()"]').click();
-  cy.url().should("contain", "/customer");
+  cy.url().should('contain', '/customer');
 });
 
-Cypress.Commands.add("loginAsBankManager", () => {
+Cypress.Commands.add('loginAsBankManager', () => {
   cy.get('button[ng-click="manager()"]').click();
-  cy.url().should("contain", "/manager");
+  cy.url().should('contain', '/manager');
 });
 
-
-Cypress.Commands.add("addUserWithAccount", (user) => {
-  cy.window().then((win) => {
+Cypress.Commands.add('addUserWithAccount', user => {
+  cy.window().then(win => {
     // Retrieve existing users and accounts from localStorage
-    const users = JSON.parse(win.localStorage.getItem("User")) || {};
-    const accounts = JSON.parse(win.localStorage.getItem("Account")) || {};
+    const users = JSON.parse(win.localStorage.getItem('User')) || {};
+    const accounts = JSON.parse(win.localStorage.getItem('Account')) || {};
 
     // Generate a new User ID
     const newUserId =
@@ -48,8 +47,8 @@ Cypress.Commands.add("addUserWithAccount", (user) => {
     };
 
     // Save updated data back to localStorage
-    win.localStorage.setItem("User", JSON.stringify(users));
-    win.localStorage.setItem("Account", JSON.stringify(accounts));
+    win.localStorage.setItem('User', JSON.stringify(users));
+    win.localStorage.setItem('Account', JSON.stringify(accounts));
     cy.reload();
   });
 });

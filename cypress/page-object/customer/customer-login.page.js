@@ -1,4 +1,4 @@
-import BasePage from "../base.page";
+import BasePage from '../base.page';
 
 export default class CustomerLogin extends BasePage {
   get selectUser() {
@@ -6,6 +6,6 @@ export default class CustomerLogin extends BasePage {
   }
 
   get submitButton() {
-    return cy.get('button[type="submit"]').contains("Login");
+    return cy.get('button[type="submit"]').contains('Login');
   }
 }
